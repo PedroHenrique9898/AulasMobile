@@ -13,6 +13,7 @@ import Feed from './componentes/feed';
 import Count from './Screens/count';
 import Product from './Screens/product';
 import Cadastrar from './Screens/cadastrar';
+import CadastroProduto from './Screens/cadastroProduto';
 
  function Tab() {
   const BottomTab = createBottomTabNavigator();
@@ -22,6 +23,7 @@ import Cadastrar from './Screens/cadastrar';
       <BottomTab.Screen name='feedtab' component={Feed} />
       <BottomTab.Screen name='Contab' component={Count} />
       <BottomTab.Screen name='Produtotab' component={Product}/>
+      <BottomTab.Screen name='Cadastrar' component={CadastroProduto}/>
       </BottomTab.Navigator>
   )
 }
