@@ -5,20 +5,18 @@ import { useState } from 'react';
 
 export default function Login({navigation}){
 
-    const [nome, setNome] = useState(""); // valor do input
-    const [mensagem, setMensagem] = useState(""); // valor do input
+    const [email, setEmail] = useState(""); // valor do input
+    const [senha, setSenha] = useState(""); // valor do input
 
     const VerificarUser = () => {
-        signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-    })
-    .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+            navigation.navigate('Home'); 
+        
+        })
+        .catch((error) => {
+            console.log('erro ao logar:', error.message);
+        });
     }
 
     return(
@@ -31,18 +29,23 @@ export default function Login({navigation}){
             <TextInput
                 style={styles.txtinput}
                 placeholder= "nome"
+                value={email}
+                onChangeText={setEmail}
                 placeholderTextColor={'BLACK'}
             />
             <TextInput
                 style={styles.txtinput}
                 placeholder='mensagem'
+                value={senha}
+                onChangeText={setSenha}
                 placeholderTextColor={'BLACK'}
 
             />
            <Button
-                title="Enviar"
-                color={'orange'}
-                onPress={() => navigation.navigate('Home')}
+                title="Login"
+                color={'orange'} // A senha é 1234  
+                onPress={VerificarUser}
+                
             /> <br></br>
             <Button
                 title="Cadastrar-se"
