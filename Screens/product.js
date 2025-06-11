@@ -1,12 +1,15 @@
 import { StyleSheet, View, Text, FlatList} from "react-native";
 import { useState, useEffect } from "react"; 
+import { NavigationContainer } from '@react-navigation/native';
 import CardProduct from "../componentes/cardProduct";
-import {db} from '../Screens/controller';
+import {db} from '../controller';
 import { collection, getDocs } from "firebase/firestore";
+import { useCarrinho } from "../CarrinhoProvider";
 
-export default function Product(){
+export default function Product({navigation}){
 
     const [produtos, setProdutos] = useState([])// Aqui ele cria um array vazio para receber os produtos do banco de dados.
+    const {adicionarProduto} = useCarrinho()
 
     useEffect(() => { 
         async function carregarProdutos() { // aqui ele cria uma função para carregar os produtos do banco de dados.
@@ -38,6 +41,10 @@ export default function Product(){
                     nome={item.nome}
                     valor={item.valor}
                     imagem={item.imagem}
+                    Comprar={()=> {
+                        adicionarProduto(item);
+                        navigation.navigate('Carrinho')
+                    }}
                 />
             )}
             keyExtractor={item => item.id}

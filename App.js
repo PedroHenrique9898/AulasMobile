@@ -14,6 +14,8 @@ import Count from './Screens/count';
 import Product from './Screens/product';
 import Cadastrar from './Screens/cadastrar';
 import CadastroProduto from './Screens/cadastroProduto';
+import { CarrinhoProvider } from './CarrinhoProvider';
+import Carrinho from './Screens/carrinho';
 
  function Tab() {
   const BottomTab = createBottomTabNavigator();
@@ -24,6 +26,8 @@ import CadastroProduto from './Screens/cadastroProduto';
       <BottomTab.Screen name='Contab' component={Count} />
       <BottomTab.Screen name='Produtotab' component={Product}/>
       <BottomTab.Screen name='Cadastrar' component={CadastroProduto}/>
+      <BottomTab.Screen name='Carrinho' component={Carrinho}/>
+    
       </BottomTab.Navigator>
   )
 }
@@ -33,13 +37,14 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return(
-    <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen name='Telalogin' component={Login}/>
-      <Stack.Screen name='TelaCadastros' component={Cadastrar}/>
-      <Stack.Screen options={{headerShown:false}} name='Home' component={Tab}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CarrinhoProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+        <Stack.Screen name='Telalogin' component={Login}/>
+        <Stack.Screen name='TelaCadastros' component={Cadastrar}/>
+        <Stack.Screen options={{headerShown:false}} name='Home' component={Tab}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CarrinhoProvider>
   )
 }
-

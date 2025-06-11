@@ -1,6 +1,6 @@
 import { View, StyleSheet, Button, TextInput} from 'react-native';
 import { useState } from "react";
-import {db} from '../Screens/controller';
+import {db} from '../controller';
 import { collection, addDoc } from "firebase/firestore";
 
 export default function CadastroProduto(){

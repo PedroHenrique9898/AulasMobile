@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet,Image,Button, TextInput} from 'react-native';
-import {auth} from '../Screens/controller';
+import {auth} from '../controller';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 
